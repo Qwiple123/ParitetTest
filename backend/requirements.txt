@@ -1,0 +1,9 @@
+pyproject-toml
+psycopg2
+Django
+environs
+gunicorn
+pandas
+djangorestframework
+django-filter
+Pillow
