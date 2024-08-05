@@ -8,9 +8,12 @@ from environs import Env
 env = Env()
 env.read_env()
 
+logging.basicConfig(
+    format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
+    level=logging.INFO,
+)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 
 SECRET_KEY = env.str('SECRET_KEY')
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
@@ -18,13 +21,6 @@ os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 DEBUG = env.bool('DEBUG')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-
-
-logging.basicConfig(
-    format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
-    level=logging.INFO,
-)
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,9 +65,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
-
-
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
@@ -83,12 +76,9 @@ DATABASES = {
     }
 }
 
-
-
 LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
-
 
 STATIC_URL = '/static/'
 
@@ -96,7 +86,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
