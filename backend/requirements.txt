@@ -6,4 +6,5 @@ gunicorn
 pandas
 djangorestframework
 django-filter
+django-cors-headers
 Pillow

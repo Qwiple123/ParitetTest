@@ -20,6 +20,13 @@ class Base64ImageField(serializers.ImageField):
 
 class ImageSerializer(serializers.ModelSerializer):
     image = Base64ImageField()
+    image_url = serializers.SerializerMethodField()
     class Meta():
         model = Image
-        fields = '__all__'
+        fields = ['id', 'image', 'description', 'image_url']
+        
+    def get_image_url(self, obj):
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url
