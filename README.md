@@ -32,14 +32,11 @@
  - Затем при необходимости отредактируйте .env файл (По умолчанию .env уже заполнен для удобства)
 ### Установка Docker
 - Убедитесь что Docker и DockerCompose установлен
-### Инициализация frontend  
-- `cd frontend`
-- `npm install`
 ### Запуск проекта
 - Перейдите в корневую директорию и запустите контейнеры Docker
 - `docker-compose up --build`
 ---
 # Использование
 ## Доступ к приложению 
- - Django API будет доступно по адресу: http://localhost/api/
+ - Django API будет доступно по адресу: http://localhost/api/api-auth/
  - Vue.js frontend будет доступен по адресу: http://localhost/
