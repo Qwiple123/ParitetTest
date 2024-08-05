@@ -1,6 +1,5 @@
 <template>
   <header>
-    <button @click="goToHome">Главная</button>
     <button @click="toggleForm">{{ showForm ? 'Закрыть форму' : 'Создать картинку' }}</button>
   </header>
 </template>
@@ -11,9 +10,6 @@ export default {
     showForm: Boolean
   },
   methods: {
-    goToHome() {
-      this.$router.push('/');
-    },
     toggleForm() {
       this.$emit('toggle-form');
     }

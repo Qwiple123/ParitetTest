@@ -18,7 +18,8 @@ import axios from 'axios';
 
 export default {
   props: {
-    showForm: Boolean
+    showForm: Boolean,
+    toggleForm: Function
   },
   data() {
     return {
@@ -40,21 +41,24 @@ export default {
       }
     },
     async handleSubmit() {
-      try {
-        const response = await axios.post('http://localhost/api/api-auth/images/', {
-          description: this.description,
-          image: this.image
-        }, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        console.log('Image uploaded successfully:', response.data);
-
-        this.imageSrc = null;
-        this.description = '';
-      } catch (error) {
-        console.error('Error uploading image:', error);
+      if (this.description && this.image){
+        try {
+          const response = await axios.post('http://localhost/api/api-auth/images/', {
+            description: this.description,
+            image: this.image
+          }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          console.log('Image uploaded successfully:', response.data);
+          this.image = null;
+          this.imageSrc = null;
+          this.description = ''; 
+          this.toggleForm();
+        } catch (error) {
+          console.error('Error uploading image:', error);
+        }
       }
     }
   }

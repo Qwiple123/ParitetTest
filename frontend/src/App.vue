@@ -1,6 +1,6 @@
 <template>
   <AppHeader :showForm="showForm" @toggle-form="toggleForm" />
-  <CreateImage v-if="showForm" />
+  <CreateImage v-if="showForm" :toggleForm="toggleForm" />
   <ItemsCatalog v-if="!showForm" />
 </template>
 
